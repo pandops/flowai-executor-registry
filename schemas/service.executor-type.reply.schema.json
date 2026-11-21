@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flowai.local/schemas/executor-registry/service.executor-type.reply.schema.json",
+  "title": "service.executor-type.reply",
+  "description": "Status 200; 404 executor_unknown_or_unavailable for an unknown or foreign Executor.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["executor_id", "team_id", "execution_tag", "executor_type"],
+  "properties": {
+    "executor_id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9223372036854775807
+    },
+    "team_id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9223372036854775807
+    },
+    "execution_tag": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,128}$"
+    },
+    "executor_type": {
+      "type": "string",
+      "enum": ["executor_docker_openhands", "executor_k8s_openhands"]
+    }
+  }
+}

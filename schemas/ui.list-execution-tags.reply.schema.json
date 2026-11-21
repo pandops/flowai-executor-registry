@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flowai.local/schemas/executor-registry/ui.list-execution-tags.reply.schema.json",
+  "title": "ui.list-execution-tags.reply",
+  "description": "Status 200. Distinct tags of the team's Executors in lexical order; default limit 50, maximum 200.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["items", "next_cursor"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "maxItems": 200,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_-]{1,128}$"
+      }
+    },
+    "next_cursor": {
+      "type": ["string", "null"]
+    }
+  }
+}

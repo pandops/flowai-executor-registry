@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flowai.local/schemas/executor-registry/service.executor-type.request.schema.json",
+  "title": "service.executor-type.request",
+  "description": "Caller model-registry only. Headers team=<team_id of the Executor>, request_id. An Executor of another team is 404 executor_unknown_or_unavailable.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["params"],
+  "properties": {
+    "params": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["executor_id"],
+      "properties": {
+        "executor_id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9223372036854775807
+        }
+      }
+    }
+  }
+}

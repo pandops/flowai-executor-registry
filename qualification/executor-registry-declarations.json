@@ -1,0 +1,160 @@
+{
+  "schemas": {
+    "svc/executor-registry/schemas/audit.executor_created.schema.json": [
+      "executor-registry",
+      "audit"
+    ],
+    "svc/executor-registry/schemas/audit.executor_deleted.schema.json": [
+      "executor-registry",
+      "audit"
+    ],
+    "svc/executor-registry/schemas/audit.executor_token_reissued.schema.json": [
+      "executor-registry",
+      "audit"
+    ],
+    "svc/executor-registry/schemas/error.reply.schema.json": [
+      "executor-registry",
+      "api-gateway",
+      "executor_docker_openhands",
+      "executor_k8s_openhands",
+      "flow-registry",
+      "model-registry"
+    ],
+    "svc/executor-registry/schemas/event.connection_lost.schema.json": [
+      "executor-registry",
+      "journal",
+      "task-manager"
+    ],
+    "svc/executor-registry/schemas/event.connection_restored.schema.json": [
+      "executor-registry",
+      "journal",
+      "task-manager"
+    ],
+    "svc/executor-registry/schemas/event.executor_lost.schema.json": [
+      "executor-registry",
+      "journal",
+      "task-manager"
+    ],
+    "svc/executor-registry/schemas/event.executor_registered.schema.json": [
+      "executor-registry",
+      "journal",
+      "model-registry",
+      "task-manager"
+    ],
+    "svc/executor-registry/schemas/event.executor_removed.schema.json": [
+      "executor-registry",
+      "journal",
+      "model-registry",
+      "task-manager"
+    ],
+    "svc/executor-registry/schemas/event.executor_status.schema.json": [
+      "executor-registry",
+      "journal",
+      "task-manager"
+    ],
+    "svc/executor-registry/schemas/event.ip_changed.schema.json": [
+      "executor-registry",
+      "journal",
+      "task-manager"
+    ],
+    "svc/executor-registry/schemas/executor.heartbeat.reply.schema.json": [
+      "executor-registry",
+      "executor_docker_openhands",
+      "executor_k8s_openhands"
+    ],
+    "svc/executor-registry/schemas/executor.heartbeat.request.schema.json": [
+      "executor-registry",
+      "executor_docker_openhands",
+      "executor_k8s_openhands"
+    ],
+    "svc/executor-registry/schemas/service.executor-type.reply.schema.json": [
+      "executor-registry",
+      "model-registry"
+    ],
+    "svc/executor-registry/schemas/service.executor-type.request.schema.json": [
+      "executor-registry",
+      "model-registry"
+    ],
+    "svc/executor-registry/schemas/service.team-tags.reply.schema.json": [
+      "executor-registry",
+      "flow-registry"
+    ],
+    "svc/executor-registry/schemas/service.team-tags.request.schema.json": [
+      "executor-registry",
+      "flow-registry"
+    ],
+    "svc/executor-registry/schemas/ui.create.reply.schema.json": [
+      "executor-registry",
+      "api-gateway"
+    ],
+    "svc/executor-registry/schemas/ui.create.request.schema.json": [
+      "executor-registry",
+      "api-gateway"
+    ],
+    "svc/executor-registry/schemas/ui.delete.request.schema.json": [
+      "executor-registry",
+      "api-gateway"
+    ],
+    "svc/executor-registry/schemas/ui.get.reply.schema.json": [
+      "executor-registry",
+      "api-gateway"
+    ],
+    "svc/executor-registry/schemas/ui.get.request.schema.json": [
+      "executor-registry",
+      "api-gateway"
+    ],
+    "svc/executor-registry/schemas/ui.list-execution-tags.reply.schema.json": [
+      "executor-registry",
+      "api-gateway"
+    ],
+    "svc/executor-registry/schemas/ui.list-execution-tags.request.schema.json": [
+      "executor-registry",
+      "api-gateway"
+    ],
+    "svc/executor-registry/schemas/ui.list.reply.schema.json": [
+      "executor-registry",
+      "api-gateway"
+    ],
+    "svc/executor-registry/schemas/ui.list.request.schema.json": [
+      "executor-registry",
+      "api-gateway"
+    ],
+    "svc/executor-registry/schemas/ui.reissue.reply.schema.json": [
+      "executor-registry",
+      "api-gateway"
+    ],
+    "svc/executor-registry/schemas/ui.reissue.request.schema.json": [
+      "executor-registry",
+      "api-gateway"
+    ],
+    "svc/task-manager/schemas/defs.schema.json": [
+      "task-manager",
+      "admin-panel",
+      "api-gateway",
+      "audit",
+      "env-registry",
+      "executor-registry",
+      "executor_docker_openhands",
+      "executor_k8s_openhands",
+      "journal",
+      "model-registry",
+      "source-controller"
+    ],
+    "svc/task-manager/schemas/service.executor-claims.reply.schema.json": [
+      "task-manager",
+      "executor-registry"
+    ],
+    "svc/team-registry/schemas/service.get.reply.schema.json": [
+      "team-registry",
+      "admin-panel",
+      "api-gateway",
+      "env-registry",
+      "executor-registry",
+      "flow-registry",
+      "journal",
+      "model-registry",
+      "source-controller",
+      "task-manager"
+    ]
+  }
+}

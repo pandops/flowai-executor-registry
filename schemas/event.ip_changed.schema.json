@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flowai.local/schemas/executor-registry/event.ip_changed.schema.json",
+  "title": "executor-registry.event.ip_changed",
+  "description": "The IP the Executor reports for itself changed (or was reported the first time). Informational only. Subject executor-registry.event.ip_changed.pub (stream ALL_EVENT); headers team=<team_id>, Nats-Msg-Id=executor-registry-<publisher_seq>.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "publisher",
+    "publisher_seq",
+    "team_id",
+    "occurred_at",
+    "kind",
+    "executor_id",
+    "old_ip",
+    "new_ip"
+  ],
+  "properties": {
+    "publisher": {
+      "const": "executor-registry"
+    },
+    "publisher_seq": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9223372036854775807
+    },
+    "team_id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9223372036854775807
+    },
+    "occurred_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "kind": {
+      "const": "ip_changed"
+    },
+    "executor_id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9223372036854775807
+    },
+    "old_ip": {
+      "type": ["string", "null"],
+      "minLength": 2,
+      "maxLength": 39
+    },
+    "new_ip": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 39
+    }
+  }
+}
