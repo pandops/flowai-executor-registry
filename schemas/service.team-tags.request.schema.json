@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flowai.local/schemas/executor-registry/service.team-tags.request.schema.json",
+  "title": "service.team-tags.request",
+  "description": "Caller flow-registry only. Headers team=<team_id> (must equal params.team_id), request_id.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["params"],
+  "properties": {
+    "params": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["team_id"],
+      "properties": {
+        "team_id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9223372036854775807
+        }
+      }
+    }
+  }
+}

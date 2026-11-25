@@ -1,0 +1,32 @@
+# executor-registry configuration (mounted at /etc/flowai/config.yaml).
+# Every key the service reads is listed. Secrets come from mounted files or
+# the deployment's Secret, never from this example.
+http:
+  listen: ":8080" # /v1/livez and /v1/readyz only
+db:
+  host: postgres
+  port: 5432
+  user: executor_registry
+  password: "<from the deployment Secret>"
+  database: flowai
+  schema: executor_registry_schema # default
+  sslmode: verify-full # the only accepted value
+  ca_file: /run/flowai/stand-ca/ca.pem
+nats:
+  url: tls://nats:4222 # tls:// only
+  ca_file: /run/flowai/stand-ca/ca.pem
+  credentials_file: /run/flowai/nats/user.creds
+  inbox_prefix: _INBOX.executor-registry
+  request_timeout: 5s # bound of every request (default 5s)
+nats_keys:
+  account_public_key_file: /run/flowai/nats-keys/account-public-key
+  account_jwt_file: /run/flowai/nats-keys/account.jwt
+  account_signing_key_file: /run/flowai/nats-keys/account-signing-key.nk
+  operator_signing_key_file: /run/flowai/nats-keys/operator-signing-key.nk
+  system_credentials_file: /run/flowai/nats-keys/system.creds
+cursor_keys: # the first key signs new cursors
+  - id: 1
+    key_hex: "<64 or more hex characters>"
+executor_types: # optional; default is both
+  - executor_docker_openhands
+  - executor_k8s_openhands

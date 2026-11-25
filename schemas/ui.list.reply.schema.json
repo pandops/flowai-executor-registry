@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flowai.local/schemas/executor-registry/ui.list.reply.schema.json",
+  "title": "ui.list.reply",
+  "description": "Status 200. Only the trusted team's Executors, ordered by executor_id ascending; default limit 50, maximum 200.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["items", "next_cursor", "total_count"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "maxItems": 200,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "executor_id",
+          "team_id",
+          "execution_tag",
+          "executor_type",
+          "created_at",
+          "token_fingerprint",
+          "token_issued_at",
+          "reported_ip",
+          "ip_reported_at"
+        ],
+        "properties": {
+          "executor_id": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          },
+          "team_id": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          },
+          "execution_tag": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,128}$"
+          },
+          "executor_type": {
+            "type": "string",
+            "enum": ["executor_docker_openhands", "executor_k8s_openhands"]
+          },
+          "created_at": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+          },
+          "token_fingerprint": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "token_issued_at": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+          },
+          "reported_ip": {
+            "type": ["string", "null"],
+            "minLength": 2,
+            "maxLength": 39
+          },
+          "ip_reported_at": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "next_cursor": {
+      "type": ["string", "null"]
+    },
+    "total_count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647
+    }
+  }
+}

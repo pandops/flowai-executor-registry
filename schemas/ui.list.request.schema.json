@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flowai.local/schemas/executor-registry/ui.list.request.schema.json",
+  "title": "ui.list.request",
+  "description": "Request headers team=<team_id>, operator_id, request_id, team_name (optional). GET /ui/v1/teams/{team_id}/executors.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["params"],
+  "properties": {
+    "params": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["team_id"],
+      "properties": {
+        "team_id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9223372036854775807
+        },
+        "cursor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1536
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 200
+        }
+      }
+    }
+  }
+}

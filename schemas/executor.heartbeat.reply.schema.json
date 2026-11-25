@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flowai.local/schemas/executor-registry/executor.heartbeat.reply.schema.json",
+  "title": "executor.heartbeat.reply",
+  "description": "Status 200 for a successful heartbeat. claims is present exactly when claims_known is true and lists the claims task-manager still holds. A heartbeat that cannot be committed gets no reply; a deleted Executor gets 404 executor_unknown_or_unavailable.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["connection_state", "claims_known"],
+  "properties": {
+    "connection_state": {
+      "type": "string",
+      "enum": [
+        "never_connected",
+        "connected",
+        "connection_lost",
+        "executor_lost"
+      ]
+    },
+    "claims_known": {
+      "type": "boolean"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["task_id", "attempt", "claim_seq"],
+        "properties": {
+          "task_id": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          },
+          "attempt": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          },
+          "claim_seq": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9223372036854775807
+          }
+        }
+      }
+    }
+  },
+  "if": {
+    "properties": {
+      "claims_known": {
+        "const": true
+      }
+    }
+  },
+  "then": {
+    "required": ["claims"]
+  },
+  "else": {
+    "not": {
+      "required": ["claims"]
+    }
+  }
+}

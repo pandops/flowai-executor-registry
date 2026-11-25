@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flowai.local/schemas/executor-registry/event.executor_lost.schema.json",
+  "title": "executor-registry.event.executor_lost",
+  "description": "W expired since the last successful heartbeat. Subject executor-registry.event.executor_lost.pub (stream ALL_EVENT); headers team=<team_id>, Nats-Msg-Id=executor-registry-<publisher_seq>.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "publisher",
+    "publisher_seq",
+    "team_id",
+    "occurred_at",
+    "kind",
+    "executor_id",
+    "last_heartbeat_at"
+  ],
+  "properties": {
+    "publisher": {
+      "const": "executor-registry"
+    },
+    "publisher_seq": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9223372036854775807
+    },
+    "team_id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9223372036854775807
+    },
+    "occurred_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "kind": {
+      "const": "executor_lost"
+    },
+    "executor_id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9223372036854775807
+    },
+    "last_heartbeat_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  }
+}
